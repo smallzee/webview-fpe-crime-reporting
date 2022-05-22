@@ -1,0 +1,2 @@
+rootProject.name = "FPE Crime Reporting"
+include ':app'
