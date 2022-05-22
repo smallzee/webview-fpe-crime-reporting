@@ -1,31 +1,15 @@
 package com.tech4all.fpecrimereporting;
 
-import android.Manifest;
-import android.content.Context;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
 
     Button developer,login;
-    TelephonyManager telephonyManager;
-    String IMEINumber,deviceName;
-    private static final int REQUEST_CODE = 101;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private int requestCode;
-    private String[] permissions;
-    private int[] grantResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,37 +35,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Developer.class));
             }
         });
-    }
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
-        switch (requestCode) {
-
-            case REQUEST_CODE: {
-
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    Toast.makeText(this, "Device Permission granted.", Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    Toast.makeText(this, "Device Permission denied.", Toast.LENGTH_SHORT).show();
-
-                }
-
-            }
-
-            case LOCATION_PERMISSION_REQUEST_CODE : {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "GPS Permission granted.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "GPS Permission is denied!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-
     }
 }
